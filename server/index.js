@@ -12,12 +12,13 @@ app.get('/', (req,res) => {
 })
 
 app.use(express.static(path.join(__dirname, '../public')))
-app.get('/api/test', () => {
+app.get('/api/test', (req,res) => {
     try{
         testFunction();
     }
     catch{
-        rollbar.error('function does not exist');
+        rollbar.error('function does not exist')
+        res.status(400).send(400)
     }
 });
 

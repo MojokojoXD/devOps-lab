@@ -3,7 +3,7 @@ const path = require('path');
 
 const app = express();
 app.use(express.json())
-app.use(rollbar.errorHandler())
+
 
 const port = process.env.PORT || 5000;
 
@@ -32,6 +32,6 @@ const rollbar = new Rollbar({
   captureUncaught: true,
   captureUnhandledRejections: true
 });
-
+app.use(rollbar.errorHandler());
 // record a generic message and send it to Rollbar
 rollbar.log("DevOps Lab");

@@ -16,8 +16,8 @@ app.get('/api/test', (req,res) => {
     try{
         testFunction();
     }
-    catch{
-        rollbar.error('function does not exist')
+    catch(e){
+        rollbar.error(e);
         res.status(400).send(400)
     }
 });
